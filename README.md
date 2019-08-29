@@ -5,7 +5,6 @@ Development was done in Windows using VisualStudio with a cmake plugin.
 Project is built using CMake.
 
 Open VisualStudio go File > Open > CMake.. 
-
 	> Browse to NitroCppTest-EoghanMcGinty\IntersectingRectangles\CMakeLists.txt and open
 
 To build simply click on the CMake option on the top bar and select Generate and then Build.
