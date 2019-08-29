@@ -33,6 +33,25 @@ TEST_CASE("Not Overlap Test", "[rectangle]") {
 	REQUIRE(yes == false);
 }
 
+TEST_CASE("Overlap Blank Rectangles Test", "[rectangle]") {
+	MyRectangle rectangle1;
+	MyRectangle rectangle2;
+	MyRectangle intersection;
+	bool yes = is_intersecting_rectangles(rectangle1, rectangle2, intersection);
+	intersection.print_intersection();
+	REQUIRE(yes == false);
+}
+
+TEST_CASE("Overlap One Blank Rectangle Test", "[rectangle]") {
+	MyRectangle rectangle1;
+	MyRectangle rectangle2(120, 200, 250, 150);
+	MyRectangle intersection;
+	bool yes = is_intersecting_rectangles(rectangle1, rectangle2, intersection);
+	intersection.print_intersection();
+	REQUIRE(yes == false);
+}
+
+
 TEST_CASE("Open JSON file", "[json]") {
 	nlohmann::json j;
 	bool yes = open_json("../../test/json/1rect.json", j);	
