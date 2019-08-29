@@ -1,4 +1,4 @@
-#Eoghan McGinty's C++ test for Nitro
+# Eoghan McGinty's C++ test for Nitro
 
 Development was done in Windows using VisualStudio with a cmake plugin.
 
