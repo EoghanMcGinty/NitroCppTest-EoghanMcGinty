@@ -25,10 +25,6 @@ public:
 			<< "), w=" << width << ", h=" << height << std::endl;
 	}
 
-	bool operator< (const MyRectangle& i) const {
-		return (x < i.x || y < i.y || width < i.width || height < i.height || intersecting_rects < i.intersecting_rects);
-	}
-
 	void print_intersection() {
 		if (intersecting_rects.empty()) {
 			std::cout << "No Intersects" << std::endl;
@@ -46,6 +42,20 @@ public:
 				<< "), w=" << width << ", h=" << height << std::endl;
 		}
 	}
+
+	MyRectangle& operator = (MyRectangle other) {
+		std::swap(x, other.x);
+		std::swap(y, other.y);
+		std::swap(width, other.width);
+		std::swap(height, other.height);
+		std::swap(intersecting_rects, other.intersecting_rects);
+		return *this;
+	}
+	
+	bool operator< (const MyRectangle& i) const {
+		return (x < i.x || y < i.y || width < i.width || height < i.height || intersecting_rects < i.intersecting_rects);
+	}
+
 };
 
 void from_json(const nlohmann::json& j, ::MyRectangle& r);

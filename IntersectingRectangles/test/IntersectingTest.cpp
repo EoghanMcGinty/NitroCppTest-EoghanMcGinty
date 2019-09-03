@@ -51,6 +51,19 @@ TEST_CASE("Overlap One Blank Rectangle Test", "[rectangle]") {
 	REQUIRE(yes == false);
 }
 
+TEST_CASE("Overlap Intersctions Test", "[rectangle]") {
+	MyRectangle rectangle1(120, 200, 250, 150);
+	rectangle1.intersecting_rects = {1,2,3,4};
+	MyRectangle rectangle2(120, 200, 250, 150);
+	rectangle2.intersecting_rects = {3,4,5,6};
+	MyRectangle intersection;
+	bool yes = is_intersecting_intersections(rectangle1, rectangle2, intersection);
+	std::set<int> testset{1, 2, 3, 4, 5, 6};
+	intersection.print_intersection();
+	REQUIRE(yes == true);
+	REQUIRE(intersection.intersecting_rects == testset);
+}
+
 
 TEST_CASE("Open JSON file", "[json]") {
 	nlohmann::json j;
