@@ -56,13 +56,16 @@ int main(int argc, char* argv[])
 			}
 		);
 	}
+
+	std::vector<MyRectangle> orig_inter_vector = inter_vector;
 	
 	std::set<MyRectangle> inter_set;
-	std::vector<MyRectangle> new_inter_vector;
-	for (auto& inter_iterator = inter_vector.begin(); inter_iterator != inter_vector.end(); ++inter_iterator) {
-		auto next_iter = std::next(inter_iterator, 1);
-		std::find_if(next_iter, inter_vector.end(),
-			[&](MyRectangle intersect2) {
+	while (!inter_vector.empty()) {
+		std::vector<MyRectangle> new_inter_vector;
+		for (auto& inter_iterator = inter_vector.begin(); inter_iterator != inter_vector.end(); ++inter_iterator) {
+			auto next_iter = std::next(inter_iterator, 1);
+			std::find_if(next_iter, inter_vector.end(),
+				[&](MyRectangle intersect2) {
 				MyRectangle new_intersect;
 				bool yes = is_intersecting_intersections(*inter_iterator, intersect2, new_intersect);
 				if (!yes) {
@@ -74,36 +77,13 @@ int main(int argc, char* argv[])
 				}
 				return false;
 			}
-		);
-	}		
-
-	bool still = true;
-	while (still) {
-		std::vector<MyRectangle> newer_inter_vector;
-		for (auto& inter_iterator = new_inter_vector.begin(); inter_iterator != new_inter_vector.end(); ++inter_iterator) {
-			auto next_iter = std::next(inter_iterator, 1);
-			std::find_if(next_iter, new_inter_vector.end(),
-				[&](MyRectangle intersect2) {
-				MyRectangle new_intersect;
-				bool yes = is_intersecting_intersections(*inter_iterator, intersect2, new_intersect);
-				if (!yes) {
-					return false;
-				}
-				auto result = inter_set.insert(new_intersect);
-				still = result.second;
-				if (still) {
-					newer_inter_vector.push_back(new_intersect);
-				}
-				return false;
-			}
 			);
 		}
-		new_inter_vector = newer_inter_vector;
+		inter_vector = new_inter_vector;
 	}
 
-
 	std::cout << "\nIntersections:" << std::endl;
-	for (auto& inter : inter_vector) {
+	for (auto& inter : orig_inter_vector) {
 		inter.print_intersection();
 	}
 	for (auto inter : inter_set) {
