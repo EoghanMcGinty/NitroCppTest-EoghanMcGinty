@@ -2,5 +2,6 @@
 #pragma once
 
 #include <iostream>
-#include "Rectangle.h"
+#include "MyRectangle.h"
+#include "MyIntersection.h"
 

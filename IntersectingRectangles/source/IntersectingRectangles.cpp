@@ -38,42 +38,43 @@ int main(int argc, char* argv[])
 
 	std::cout << "Input: " << std::endl;
 	for (auto& rect : rect_vec) {
-		rect.print_rectangle();
+		rect.print();
 	}
 
-	std::vector<MyRectangle> inter_vector;
+	std::vector<MyIntersection> inter_vector;
 	for (auto& rect_iterator = rect_vec.begin(); rect_iterator != rect_vec.end(); ++rect_iterator) {
 		auto next_iter = std::next(rect_iterator, 1);
 		std::find_if(next_iter, rect_vec.end(),
-			[&](MyRectangle rect2) {
-				MyRectangle intersect;
-				bool yes = is_intersecting_rectangles(*rect_iterator, rect2, intersect);
-				if (!yes) {
+			[&](MyRectangle rect_other) {
+				auto rectangle = rect_iterator->is_intersecting(rect_other);
+				if (!rectangle) {
 					return false;
 				}
-				inter_vector.push_back(intersect);
+				MyIntersection intersection(*rectangle);
+				intersection.insert_id(rect_iterator->getId());
+				intersection.insert_id(rect_other.getId());
+				inter_vector.push_back(intersection);
 				return false;
 			}
 		);
 	}
 
-	std::vector<MyRectangle> orig_inter_vector = inter_vector;
+	std::vector<MyIntersection> orig_inter_vector = inter_vector;
 	
-	std::set<MyRectangle> inter_set;
+	std::set<MyIntersection> inter_set;
 	while (!inter_vector.empty()) {
-		std::vector<MyRectangle> new_inter_vector;
+		std::vector<MyIntersection> new_inter_vector;
 		for (auto& inter_iterator = inter_vector.begin(); inter_iterator != inter_vector.end(); ++inter_iterator) {
 			auto next_iter = std::next(inter_iterator, 1);
 			std::find_if(next_iter, inter_vector.end(),
-				[&](MyRectangle intersect2) {
-				MyRectangle new_intersect;
-				bool yes = is_intersecting_intersections(*inter_iterator, intersect2, new_intersect);
-				if (!yes) {
+				[&](MyIntersection intersect_other) {
+				auto new_intersect = inter_iterator->is_intersecting(intersect_other);
+				if (!new_intersect) {
 					return false;
 				}
-				auto result = inter_set.insert(new_intersect);
+				auto result = inter_set.insert(*new_intersect);
 				if (result.second) {
-					new_inter_vector.push_back(new_intersect);
+					new_inter_vector.push_back(*new_intersect);
 				}
 				return false;
 			}
@@ -84,10 +85,10 @@ int main(int argc, char* argv[])
 
 	std::cout << "\nIntersections:" << std::endl;
 	for (auto& inter : orig_inter_vector) {
-		inter.print_intersection();
+		inter.print();
 	}
-	for (auto inter : inter_set) {
-		inter.print_intersection();
+	for (auto& inter : inter_set) {
+		inter.print();
 	}
 
 	return 0;
