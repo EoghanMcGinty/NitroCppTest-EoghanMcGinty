@@ -4,17 +4,20 @@
 
 class MyIntersection{
 private:
-	std::set<int> intersecting_rects;
+	std::set<int> intersecting_rect_ids;
 	MyRectangle rectangle;
 public:
 	MyIntersection(int x, int y, int w, int h);
 	MyIntersection();
 	MyIntersection(MyRectangle new_rectangle);
 
-	std::set<int> getIntersections();
-	void setIntersections(std::set<int> intersections);
+	std::set<int> get_ids() const;
+	void set_ids(std::set<int> intersections);
 	void insert_id(int id);
 	void insert_ids(std::set<int> ids);
+
+	int get_area() const;
+	int number_of_intersections() const;
 
 	void print() const;
 

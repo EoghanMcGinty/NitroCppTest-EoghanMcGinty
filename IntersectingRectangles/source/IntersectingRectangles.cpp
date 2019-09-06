@@ -1,8 +1,5 @@
 ﻿
 #include "IntersectingRectangles.h"
-#include <set>
-#include <cmath>
-#include <algorithm>
 
 int main(int argc, char* argv[])
 {
@@ -44,15 +41,15 @@ int main(int argc, char* argv[])
 	std::vector<MyIntersection> inter_vector;
 	for (auto& rect_iterator = rect_vec.begin(); rect_iterator != rect_vec.end(); ++rect_iterator) {
 		auto next_iter = std::next(rect_iterator, 1);
-		std::find_if(next_iter, rect_vec.end(),
+		auto it = std::find_if(next_iter, rect_vec.end(),
 			[&](MyRectangle rect_other) {
 				auto rectangle = rect_iterator->is_intersecting(rect_other);
 				if (!rectangle) {
 					return false;
 				}
 				MyIntersection intersection(*rectangle);
-				intersection.insert_id(rect_iterator->getId());
-				intersection.insert_id(rect_other.getId());
+				intersection.insert_id(rect_iterator->get_id());
+				intersection.insert_id(rect_other.get_id());
 				inter_vector.push_back(intersection);
 				return false;
 			}
@@ -66,7 +63,7 @@ int main(int argc, char* argv[])
 		std::vector<MyIntersection> new_inter_vector;
 		for (auto& inter_iterator = inter_vector.begin(); inter_iterator != inter_vector.end(); ++inter_iterator) {
 			auto next_iter = std::next(inter_iterator, 1);
-			std::find_if(next_iter, inter_vector.end(),
+			auto it = std::find_if(next_iter, inter_vector.end(),
 				[&](MyIntersection intersect_other) {
 				auto new_intersect = inter_iterator->is_intersecting(intersect_other);
 				if (!new_intersect) {
@@ -90,6 +87,24 @@ int main(int argc, char* argv[])
 	for (auto& inter : inter_set) {
 		inter.print();
 	}
+
+	std::cout << "\nArea of Rectangles:" << std::endl;
+	int area = 0;
+	for (auto& rect : rect_vec) {
+		area += rect.get_area();
+	}
+	for (auto& inter : orig_inter_vector) {
+		area -= inter.get_area();
+	}
+	for (auto& inter : inter_set) {
+		if (inter.number_of_intersections() % 2 == 0) {
+			area -= inter.get_area();
+		}
+		else {
+			area += inter.get_area();
+		}
+	}
+	std::cout << "\t" << area << std::endl;
 
 	return 0;
 }

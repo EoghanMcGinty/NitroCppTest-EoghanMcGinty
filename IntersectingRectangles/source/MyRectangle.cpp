@@ -1,20 +1,29 @@
 #include "MyRectangle.h"
 
-MyRectangle::MyRectangle() : id(++curr_id) {}
+MyRectangle::MyRectangle() : x(0), y(0), width(0), height(0), id(++curr_id) {}
 MyRectangle::MyRectangle(int x, int y, int w, int h)
 	: x(x), y(y), width(w), height(h), id(++curr_id) {}
 int MyRectangle::curr_id = 0;
 
-int MyRectangle::getX() const { return x; }
-int MyRectangle::getY() const { return y; }
-int MyRectangle::getWidth() const { return width; }
-int MyRectangle::getHeight() const { return height; }
-int MyRectangle::getId() const { return id; }
+int MyRectangle::get_x() const { return x; }
+int MyRectangle::get_y() const { return y; }
+int MyRectangle::get_width() const { return width; }
+int MyRectangle::get_height() const { return height; }
+int MyRectangle::get_id() const { return id; }
 
-void MyRectangle::setX(int newX) { x = newX; }
-void MyRectangle::setY(int newY) { y = newY; }
-void MyRectangle::setWidth(int w) { width = w; }
-void MyRectangle::setHeight(int h) { height = h; }
+void MyRectangle::set_x(int new_x) { x = new_x; }
+void MyRectangle::set_y(int new_y) { y = new_y; }
+
+void MyRectangle::set_width(int w) { 
+	width = (w > 0) ? w : 0;
+}
+void MyRectangle::set_height(int h) { 
+	height = (h > 0) ? h : 0;
+}
+
+int MyRectangle::get_area() const {
+	return width * height;
+}
 
 void MyRectangle::print() {
 	std::cout << "\t" << id << ": Rectangle at (" << x << "," << y
@@ -48,13 +57,13 @@ std::optional<MyRectangle> MyRectangle::is_intersecting(MyRectangle& other) {
 
 void from_json(const nlohmann::json& json, MyRectangle& rectangle) {
 	try {
-		rectangle.setX((json.at("x").get<int>()));
-		rectangle.setY((json.at("y").get<int>()));
-		rectangle.setWidth((json.at("w").get<int>()));
-		rectangle.setHeight((json.at("h").get<int>()));
+		rectangle.set_x((json.at("x").get<int>()));
+		rectangle.set_y((json.at("y").get<int>()));
+		rectangle.set_width((json.at("w").get<int>()));
+		rectangle.set_height((json.at("h").get<int>()));
 	}
 	catch (std::exception e) {
-		std::cerr << "Incorrect Structure for Rectangle " << rectangle.getId() << std::endl;
+		std::cerr << "Incorrect Structure for Rectangle " << rectangle.get_id() << std::endl;
 		throw e;
 	}
 }
