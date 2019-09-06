@@ -102,28 +102,18 @@ TEST_CASE("Max Int On Rectangle", "[rectangle]") {
 }
 
 TEST_CASE("10 overlapping intersections", "[intersection]") {
-	MyRectangle rectangle1(100, 100, 100, 150);
-	MyRectangle rectangle2(105, 105, 150, 100);
-	MyRectangle rectangle3(90, 90, 140, 200);
-	MyRectangle rectangle4(95, 95, 95, 95);
-	MyRectangle rectangle5(110, 110, 150, 200);
-	MyRectangle rectangle6(100, 100, 80, 150);
-	MyRectangle rectangle7(100, 100, 200, 200);
-	MyRectangle rectangle8(90, 90, 90, 150);
-	MyRectangle rectangle9(110, 110, 250, 80);
-	MyRectangle rectangle10(95, 95, 95, 95);
 
 	std::vector<MyRectangle> rect_vec;
-	rect_vec.push_back(rectangle1);
-	rect_vec.push_back(rectangle2);
-	rect_vec.push_back(rectangle3);
-	rect_vec.push_back(rectangle4);
-	rect_vec.push_back(rectangle5);
-	rect_vec.push_back(rectangle6);
-	rect_vec.push_back(rectangle7);
-	rect_vec.push_back(rectangle8);
-	rect_vec.push_back(rectangle9);
-	rect_vec.push_back(rectangle10);
+	rect_vec.push_back(MyRectangle(100, 100, 100, 150));
+	rect_vec.push_back(MyRectangle(105, 105, 150, 100));
+	rect_vec.push_back(MyRectangle(90, 90, 140, 200));
+	rect_vec.push_back(MyRectangle(95, 95, 95, 95));
+	rect_vec.push_back(MyRectangle(110, 110, 150, 200));
+	rect_vec.push_back(MyRectangle(100, 100, 80, 150));
+	rect_vec.push_back(MyRectangle(100, 100, 200, 200));
+	rect_vec.push_back(MyRectangle(90, 90, 90, 150));
+	rect_vec.push_back(MyRectangle(110, 110, 250, 80));
+	rect_vec.push_back(MyRectangle(95, 95, 95, 95));
 
 	std::vector<MyIntersection> inter_vector;
 	for (auto& rect_iterator = rect_vec.begin(); rect_iterator != rect_vec.end(); ++rect_iterator) {
@@ -177,28 +167,18 @@ TEST_CASE("10 overlapping intersections", "[intersection]") {
 }
 
 TEST_CASE("0 overlapping intersections", "[intersection]") {
-	MyRectangle rectangle1(100, 100, 40, 40);
-	MyRectangle rectangle2(305, 305, 40, 40);
-	MyRectangle rectangle3(-90, -90, 40, 40);
-	MyRectangle rectangle4(405, 405, 40, 40);
-	MyRectangle rectangle5(510, 510, 40, 40);
-	MyRectangle rectangle6(700, 700, 40, 40);
-	MyRectangle rectangle7(900, 900, 40, 40);
-	MyRectangle rectangle8(-190, -190, 40, 40);
-	MyRectangle rectangle9(1110, 1110, 40, 40);
-	MyRectangle rectangle10(-295, -295, 45, 45);
 
 	std::vector<MyRectangle> rect_vec;
-	rect_vec.push_back(rectangle1);
-	rect_vec.push_back(rectangle2);
-	rect_vec.push_back(rectangle3);
-	rect_vec.push_back(rectangle4);
-	rect_vec.push_back(rectangle5);
-	rect_vec.push_back(rectangle6);
-	rect_vec.push_back(rectangle7);
-	rect_vec.push_back(rectangle8);
-	rect_vec.push_back(rectangle9);
-	rect_vec.push_back(rectangle10);
+	rect_vec.push_back(MyRectangle(100, 100, 40, 40));
+	rect_vec.push_back(MyRectangle(305, 305, 40, 40));
+	rect_vec.push_back(MyRectangle(-90, -90, 40, 40));
+	rect_vec.push_back(MyRectangle(405, 405, 40, 40));
+	rect_vec.push_back(MyRectangle(510, 510, 40, 40));
+	rect_vec.push_back(MyRectangle(700, 700, 40, 40));
+	rect_vec.push_back(MyRectangle(900, 900, 40, 40));
+	rect_vec.push_back(MyRectangle(-190, -190, 40, 40));
+	rect_vec.push_back(MyRectangle(1110, 1110, 40, 40));
+	rect_vec.push_back(MyRectangle(-295, -295, 45, 45));
 
 	std::vector<MyIntersection> inter_vector;
 	for (auto& rect_iterator = rect_vec.begin(); rect_iterator != rect_vec.end(); ++rect_iterator) {
@@ -252,28 +232,18 @@ TEST_CASE("0 overlapping intersections", "[intersection]") {
 }
 
 TEST_CASE("5 overlapping intersections", "[intersection]") {
-	MyRectangle rectangle1(100, 100, 100, 150);
-	MyRectangle rectangle2(105, 105, 150, 100);
-	MyRectangle rectangle3(90, 90, 140, 200);
-	MyRectangle rectangle4(95, 95, 95, 95);
-	MyRectangle rectangle5(110, 110, 150, 200);
-	MyRectangle rectangle6(700, 700, 40, 40);
-	MyRectangle rectangle7(900, 900, 40, 40);
-	MyRectangle rectangle8(-190, -190, 40, 40);
-	MyRectangle rectangle9(1110, 1110, 40, 40);
-	MyRectangle rectangle10(-295, -295, 45, 45);
 
 	std::vector<MyRectangle> rect_vec;
-	rect_vec.push_back(rectangle1);
-	rect_vec.push_back(rectangle2);
-	rect_vec.push_back(rectangle3);
-	rect_vec.push_back(rectangle4);
-	rect_vec.push_back(rectangle5);
-	rect_vec.push_back(rectangle6);
-	rect_vec.push_back(rectangle7);
-	rect_vec.push_back(rectangle8);
-	rect_vec.push_back(rectangle9);
-	rect_vec.push_back(rectangle10);
+	rect_vec.push_back(MyRectangle(100, 100, 100, 150));
+	rect_vec.push_back(MyRectangle(105, 105, 150, 100));
+	rect_vec.push_back(MyRectangle(90, 90, 140, 200));
+	rect_vec.push_back(MyRectangle(95, 95, 95, 95));
+	rect_vec.push_back(MyRectangle(110, 110, 150, 200));
+	rect_vec.push_back(MyRectangle(700, 700, 40, 40));
+	rect_vec.push_back(MyRectangle(900, 900, 40, 40));
+	rect_vec.push_back(MyRectangle(-190, -190, 40, 40));
+	rect_vec.push_back(MyRectangle(1110, 1110, 40, 40));
+	rect_vec.push_back(MyRectangle(-295, -295, 45, 45));
 
 	std::vector<MyIntersection> inter_vector;
 	for (auto& rect_iterator = rect_vec.begin(); rect_iterator != rect_vec.end(); ++rect_iterator) {
@@ -326,20 +296,68 @@ TEST_CASE("5 overlapping intersections", "[intersection]") {
 	REQUIRE(yes == true);
 }
 
-
-TEST_CASE("Area of 5 overlapping intersections", "[area]") {
-	MyRectangle rectangle1(100, 100, 100, 150);
-	MyRectangle rectangle2(105, 105, 150, 100);
-	MyRectangle rectangle3(90, 90, 140, 200);
-	MyRectangle rectangle4(95, 95, 95, 95);
-	MyRectangle rectangle5(110, 110, 150, 200);
+TEST_CASE("Overlapping intersections from document", "[intersection]") {
 
 	std::vector<MyRectangle> rect_vec;
-	rect_vec.push_back(rectangle1);
-	rect_vec.push_back(rectangle2);
-	rect_vec.push_back(rectangle3);
-	rect_vec.push_back(rectangle4);
-	rect_vec.push_back(rectangle5);
+	rect_vec.push_back(MyRectangle(100, 100, 250, 80));
+	rect_vec.push_back(MyRectangle(120, 200, 250, 150));
+	rect_vec.push_back(MyRectangle(140, 160, 250, 100));
+	rect_vec.push_back(MyRectangle(160, 140, 350, 190));
+
+	std::vector<MyIntersection> inter_vector;
+	for (auto& rect_iterator = rect_vec.begin(); rect_iterator != rect_vec.end(); ++rect_iterator) {
+		auto next_iter = std::next(rect_iterator, 1);
+		auto it = std::find_if(next_iter, rect_vec.end(),
+			[&](MyRectangle rect_other) {
+			auto rectangle = rect_iterator->is_intersecting(rect_other);
+			if (!rectangle) {
+				return false;
+			}
+			MyIntersection intersection(*rectangle);
+			intersection.insert_id(rect_iterator->get_id());
+			intersection.insert_id(rect_other.get_id());
+			inter_vector.push_back(intersection);
+			return false;
+		}
+		);
+	}
+
+	std::vector<MyIntersection> orig_inter_vector = inter_vector;
+
+	std::set<MyIntersection> inter_set;
+	while (!inter_vector.empty()) {
+		std::vector<MyIntersection> new_inter_vector;
+		for (auto& inter_iterator = inter_vector.begin(); inter_iterator != inter_vector.end(); ++inter_iterator) {
+			auto next_iter = std::next(inter_iterator, 1);
+			auto it = std::find_if(next_iter, inter_vector.end(),
+				[&](MyIntersection intersect_other) {
+				auto new_intersect = inter_iterator->is_intersecting(intersect_other);
+				if (!new_intersect) {
+					return false;
+				}
+				auto result = inter_set.insert(*new_intersect);
+				if (result.second) {
+					new_inter_vector.push_back(*new_intersect);
+				}
+				return false;
+			}
+			);
+		}
+		inter_vector = new_inter_vector;
+	}
+	
+	auto iter = inter_set.begin();
+	REQUIRE(iter->get_area() == 3800);
+}
+
+TEST_CASE("Area of 5 overlapping intersections", "[area]") {
+
+	std::vector<MyRectangle> rect_vec;
+	rect_vec.push_back(MyRectangle(100, 100, 100, 150));
+	rect_vec.push_back(MyRectangle(105, 105, 150, 100));
+	rect_vec.push_back(MyRectangle(90, 90, 140, 200));
+	rect_vec.push_back(MyRectangle(95, 95, 95, 95));
+	rect_vec.push_back(MyRectangle(110, 110, 150, 200));
 
 	std::vector<MyIntersection> inter_vector;
 	for (auto& rect_iterator = rect_vec.begin(); rect_iterator != rect_vec.end(); ++rect_iterator) {
@@ -403,18 +421,13 @@ TEST_CASE("Area of 5 overlapping intersections", "[area]") {
 }
 
 TEST_CASE("Area of 0 overlapping intersections", "[area]") {
-	MyRectangle rectangle1(100, 100, 40, 40);
-	MyRectangle rectangle2(305, 305, 40, 40);
-	MyRectangle rectangle3(-90, -90, 40, 40);
-	MyRectangle rectangle4(405, 405, 40, 40);
-	MyRectangle rectangle5(510, 510, 40, 40);
 
 	std::vector<MyRectangle> rect_vec;
-	rect_vec.push_back(rectangle1);
-	rect_vec.push_back(rectangle2);
-	rect_vec.push_back(rectangle3);
-	rect_vec.push_back(rectangle4);
-	rect_vec.push_back(rectangle5);
+	rect_vec.push_back(MyRectangle(100, 100, 40, 40));
+	rect_vec.push_back(MyRectangle(305, 305, 40, 40));
+	rect_vec.push_back(MyRectangle(-90, -90, 40, 40));
+	rect_vec.push_back(MyRectangle(405, 405, 40, 40));
+	rect_vec.push_back(MyRectangle(510, 510, 40, 40));
 
 	std::vector<MyIntersection> inter_vector;
 	for (auto& rect_iterator = rect_vec.begin(); rect_iterator != rect_vec.end(); ++rect_iterator) {
