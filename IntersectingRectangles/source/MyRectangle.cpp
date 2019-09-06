@@ -16,9 +16,15 @@ void MyRectangle::set_y(int new_y) { y = new_y; }
 
 void MyRectangle::set_width(int w) { 
 	width = (w > 0) ? w : 0;
+	if (w < 0) {
+		std::cerr << "Width must be a positive integer" << std::endl;
+	}
 }
 void MyRectangle::set_height(int h) { 
 	height = (h > 0) ? h : 0;
+	if (h < 0) {
+		std::cerr << "Height must be a positive integer" << std::endl;
+	}
 }
 
 int MyRectangle::get_area() const {
